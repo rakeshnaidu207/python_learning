@@ -1,0 +1,320 @@
+day -3
+
+# operators
+
+arithmetic operators
+
+Arithmetic operators are used with numeric values to perform common mathematical operations
+
+Operator	Name	Example	
++	Addition	x + y	
+-	Subtraction	x - y	
+*	Multiplication	x * y	
+/	Division	x / y	
+%	Modulus	x % y	
+**	Exponentiation	x ** y	
+//	Floor division	x // y
+
+/ - Division (returns a float)
+// - Floor division (returns an integer)
+-- we can use the +, * with the strings
+
+a=3
+b=4
+print(a+b)
+print(a-b)
+print(a*b)
+print(a%b)
+print(a/b)
+print(a//b)
+print(a**b)
+
+a ="banana"
+b="awesome"
+print(a + " "+b)
+
+a ="banana"
+b="awesome"
+print(a*2)
+
+
+comparison operators
+
+Comparison operators return True or False based on the comparison
+
+==	Equal	x == y	
+!=	Not equal	x != y	
+>	Greater than	x > y	
+<	Less than	x < y	
+>=	Greater than or equal to  x >= y	
+<=	Less than or equal to	x <= y
+
+-- we can compare the strings as well
+a="apple"
+b="banana"
+print(a>b)
+print(a<b)
+print(a==b)
+print(a!=b)
+print(a>=b)
+print(a<=b)
+
+a=6
+b=8
+print(a>b)
+print(a<b)
+print(a==b)
+print(a!=b)
+print(a>=b)
+print(a<=b)
+
+
+logical operator
+Logical operators are used to combine conditional statements
+
+Operator	Description	Example	
+and 	Returns True if both statements are true	x < 5 and  x < 10	
+or	Returns True if one of the statements is true	x < 5 or x < 4	
+not	Reverse the result, returns False if the result is true	not(x < 5 and x < 10)
+
+--- directly we cannot use the two statements in the not like and and or.
+a=3
+b=5
+print((a>b) and (b>a))
+print((a>b) or (b>a))
+print(not(a>b))
+ 
+bit wise operators
+Bitwise operators are used to compare (binary) numbers.
+
+Operator	Name	Description	Example	
+& 	AND	Sets each bit to 1 if both bits are 1	x & y	
+|	OR	Sets each bit to 1 if one of two bits is 1	x | y	
+^	XOR	Sets each bit to 1 if only one of two bits is 1	x ^ y	
+~	NOT	Inverts all the bits	~x	
+<<	Zero fill left shift	Shift left by pushing zeros in from the right and let the leftmost bits fall off	x << 2	
+>>	Signed right shift	Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off	x >> 2
+
+
+x=16
+print(x<<1)
+print(15<<1)
+print(15>>1)
+print(2>>1)
+
+
+assignment operator
+
+Assignment operators are used to assign values to variables
+
+Operator	Example	Same As	
+=	x = 5	x = 5	
++=	x += 3	x = x + 3	
+-=	x -= 3	x = x - 3	
+*=	x *= 3	x = x * 3	
+/=	x /= 3	x = x / 3	
+%=	x %= 3	x = x % 3	
+//=	x //= 3	x = x // 3	
+**=	x **= 3	x = x ** 3	
+&=	x &= 3	x = x & 3	
+|=	x |= 3	x = x | 3	
+^=	x ^= 3	x = x ^ 3	
+>>=	x >>= 3	x = x >> 3	
+<<=	x <<= 3	x = x << 3	
+:=	print(x := 3)	x = 3 print(x)
+
+c=40
+c**=3
+print(c)
+
+c=40
+a=10
+b=20
+c+=a
+print(c)
+c-=b
+print(c)
+c%=10
+print(c)
+c/=10
+print(c)
+c//=b
+print(c)
+
+a=10
+b=20
+a&=b
+print(a)
+
+x = 5
+x |= 3
+print(x)
+
+x = 5
+x ^= 3
+print(x)
+
+x = 5
+x >>= 3
+print(x)
+
+x = 5
+x <<= 3
+print(x)
+
+identity  operators
+
+Identity operators are used to compare the objects, not if they are equal, but if they are actually the same object, with the same memory location.
+
+Operator	Description	Example
+is 	Returns True if both variables are the same object	x is y	
+is not	Returns True if both variables are not the same object	x is not y
+
+ --- when we give = it will give true
+
+x = ["apple", "banana"]
+y = ["apple", "banana"]
+z = x
+
+print(x is z)
+
+# returns True because z is the same object as x
+
+print(x is y)
+
+# returns False because x is not the same object as y, even if they have the same content
+
+print(x == y)
+
+# to demonstrate the difference betweeen "is" and "==": this comparison returns True because x is equal to y
+
+a=[1,2,3]
+c=a.copy()
+print(a is c)
+print(a is not c) a and  c both are not stored in same location
+
+member ship operator
+
+Membership operators are used to test if a sequence is presented in an object
+
+Operator	Description	Example
+in 	Returns True if a sequence with the specified value is present in the object	x in y	
+not in	Returns True if a sequence with the specified value is not present in the object	x not in y
+
+a="python is programming language"
+print("python" in a)
+print("is" not in a)
+
+a={"rak": "raj","age" : 34}
+print("rak" in a.keys())
+
+a={"rak": "raj","age" : 34}
+print("rak" in a.values())
+
+
+operator proceeding
+
+Operator precedence describes the order in which operations are performed.
+
+Parentheses has the highest precedence, meaning that expressions inside parentheses must be evaluated first:
+
+print((6 + 3) - (6 + 3))
+
+Multiplication * has higher precedence than addition +, and therefore multiplications are evaluated before additions
+
+print(100 + 5 * 3)
+
+Exponentiation has higher precedence than subtraction, and needs to be evaluated first.
+
+Exponentiation has higher precedence than subtraction, and needs to be evaluated first.
+The calculation above reads 100 - 27 = 73
+
+print(100 + ~3)
+
+"""
+Bitwise NOT has higher precedence than addition, and needs to be evaluated first.
+The calculation above reads 100 + -4 = 96
+"""
+
+byte vs bit
+
+Bits and bytes are the smallest units of data in a computer.
+
+A bit is a single binary digit, with a value of either 0 or 1.
+
+A byte is a group of 8 bits.
+
+Share
+
+
+
+Link Copied
+What is a Bit?
+A bit is the smallest possible unit of data in a computer.
+
+One bit holds a value of either 0 or 1.
+
+Bits are stored in different ways:
+
+In computer memory, a bit is stored as electrical voltage, where a voltage above a certain threshold represents a 1, and a voltage below that threshold represents a 0.
+In hard disk drives, a bit is stored as magnetism, where an area magnetized in one orientation represents a 1, and a magnetized area in the opposite orientation represents a 0.
+In CDs, DVDs, and Blu-ray discs, a bit is stored as either a pit, or a flat area. A pit is an area where the surface is lower than the surrounding surface, and that represents a 1. A flat area is when there is no pit, and that represents a 0.
+But simply storing just one bit is not very useful. We need to store more bits together to represent larger amounts of data.
+
+What is a Byte?
+A byte is a group of 8 bits, like 10001011 for example.
+
+Each bit can be either 0 or 1, and with 8 bits in a byte, there are 28 = 256 different values a byte can have.
+
+Using one byte, we can store:
+
+A pixel with one out of 256 different colors.
+An unsigned number from 0 to 255.
+A signed number from -128 to 127.
+A character from the ASCII table.
+This means that the specific byte 10001011 could be:
+
+A pixel with a specific color.
+The unsigned number 139.
+The signed number -117 (the leftmost bit is 1, which means it is a negative number).
+The character <, from the extended ASCII table ISO-8859-1.
+But normally, modern computers use more than one byte to store a single character, number or color.
+
+Learn about binary numbers to get a deeper understanding of how bits and bytes work.
+
+Storing Groups of Bytes
+Like we have seen, it is possible to use a single byte to store a single character, a number, or a color.
+
+But normally, modern computers use more than one byte to store something.
+
+Colors
+This blue color for example, is created with CSS code rgb(0,153,204), and is stored using 3 bytes:
+
+00000000 (0) for red color
+10011001 (153) for green color
+11001100 (204) for blue color
+Color codes for other colors can be found using this color picker.
+
+Using 3 bytes, we can store 224 = 16,777,216 different colors.
+
+Characters
+Storing characters using UTF-8 encoding, a single character can be stored in 1 to 4 bytes.
+
+In UTF-8, the letter g is stored using 1 byte as 01100111, and the smiley emoji 😊 is stored using 4 bytes as 11110000 10011111 10011000 10001010.
+
+Using 1 to 4 bytes, we can store 1,112,064 different characters.
+
+Numbers
+Storing numbers that are either very large or in need of high precision, or both, requires a lot of data storage.
+
+For example, storing the mathematical number pi 𝜋 = 3.141592... in Python or JavaScript, requires 64 bits (following the IEEE 754 standard).
+
+Using 64 bits to store numbers makes it possible to store large numbers, and numbers with a high precision, and that allows us to do very precise calculations.
+
+
+
+
+
+
+
+
