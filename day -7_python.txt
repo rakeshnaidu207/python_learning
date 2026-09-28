@@ -1,0 +1,236 @@
+# functions
+
+From a function's perspective:
+A parameter is the variable listed inside the parentheses in the function definition.
+An argument is the actual value that is sent to the function when it is called.
+
+def my_function(name): # name is a parameter
+  print("Hello", name)
+
+my_function("Emil") # "Emil" is an argument
+
+in the functions we have a function with parameters and arguments.
+in the arguments we have two types positional and  key word arguments.
+
+Functions can return any data type, including lists, tuples, dictionaries, and more
+
+in some ceases we don't no how many arguments are used at that time we use the *args for positional arguments and **kwargs for the keyword arguments.
+
+we can also restrict the function to use only the positional arguments with the /, and for the key word arguments we use the *,.
+
+def my_function(name, /):
+  print("Hello", name)
+
+my_function("Emil")
+
+def my_function(*, name):
+  print("Hello", name)
+
+my_function(name = "Emil")
+
+when we use the *args the arguments will become a tuple. when we use the **kwargs the arguments will become a dictionary.
+
+def my_function(title, *args, **kwargs):
+  print("Title:", title)
+  print("Positional arguments:", args)
+  print("Keyword arguments:", kwargs)
+
+my_function("User Info", "Emil", "Tobias", age = 25, city = "Oslo")
+
+def my_function(title, *args, **kwargs):
+  print("Title:", title)
+  print("Positional arguments:", args[1])
+  print("Keyword arguments:", kwargs["age"])
+
+my_function("User Info", "Emil", "Tobias", age = 25, city = "Oslo")
+ 
+when we need to give the positional arguments first and after the positional arguments we need to give the key word arguments. when we assigning the arguments in the function.
+
+Use * and ** in function definitions to collect arguments, and use them in function calls to unpack arguments.
+
+def my_function(a, b, c):
+  return a + b + c
+
+numbers = [1, 2, 3]
+result = my_function(*numbers) # Same as: my_function(1, 2, 3)
+print(result)
+
+def my_function(fname, lname):
+  print("Hello", fname, lname)
+
+person = {"fname": "Emil", "lname": "Refsnes"}
+my_function(**person) # Same as: my_function(fname="Emil", lname="Refsnes")
+
+
+A variable created in the main body of the Python code is a global variable and belongs to the global scope.
+
+Global variables are available from within any scope, global and local
+
+x = 300
+
+def myfunc():
+  print(x)
+
+myfunc()
+
+print(x)
+
+If you operate with the same variable name inside and outside of a function, Python will treat them as two separate variables, one available in the global scope (outside the function) and one available in the local scope (inside the function).
+
+x = 300
+
+def myfunc():
+  x = 200
+  print(x)
+
+myfunc()
+
+print(x)
+
+f you need to create a global variable, but are stuck in the local scope, you can use the global keyword.
+
+The global keyword makes the variable global.
+
+def myfunc():
+  global x
+  x = 300
+
+myfunc()
+
+print(x)
+
+to change the value of a global variable inside a function, refer to the variable by using the global keyword
+
+x = 300
+
+def myfunc():
+  global x
+  x = 200
+
+myfunc()
+
+print(x)
+
+The nonlocal keyword is used to work with variables inside nested functions.
+
+The nonlocal keyword makes the variable belong to the outer function
+
+def myfunc1():
+  x = "Jane"
+  def myfunc2():
+    nonlocal x
+    x = "hello"
+  myfunc2()
+  return x
+
+print(myfunc1())
+
+***#decorators
+Decorators let you add extra behavior to a function, without changing the function's code.
+A decorator is a function that takes another function as input and returns a new function.
+Define the decorator first, then apply it with @decorator_name above the function
+By placing @changecase directly above the function definition, the function myfunction is being "decorated" with the changecase function.
+The function changecase is the decorator.
+The function myfunction is the function that gets decorated
+A decorator can be called multiple times. Just place the decorator above the function you want to decorate
+Functions that require arguments can also be decorated, just make sure you pass the arguments to the wrapper function
+Sometimes the decorator function has no control over the arguments passed from decorated function, to solve this problem, add (*args, **kwargs) to the wrapper function, this way the wrapper function can accept any number, and any type of arguments, and pass them to the decorated function.
+Decorators can accept their own arguments by adding another wrapper level
+
+
+# decorators with arguments
+def capital_case(func):
+    def inner(x):
+        return func(x).upper()
+    return inner
+
+@capital_case
+def changing(x):
+    return x
+print(changing("rakesh"))
+
+# decorators without arguments
+def capital_case(func):
+    def inner():
+        return func().upper()
+    return inner
+
+@capital_case
+def changing():
+    return "hello"+" "+"rakesh"
+print(changing())
+
+#decorators with **args and **kwargs
+def capital_case(func):
+    def inner(*name, **ages):
+        return func(*name,**ages).upper()
+    return inner
+
+@capital_case
+def changing(*name,**ages):
+    return f"{name[0]} is {ages["age"]}"
+print(changing("rak",age=20))
+
+#decorators using that takes an argument and transforms the casing based on the argument value
+def changecase(n):
+    def change(func):
+        def inner(x):
+            if n==1:
+                a= func(x).upper()
+            else:
+                a=func(x).lower()
+            return a
+        return inner
+    return change
+
+@changecase(1)
+def string_change(x):
+    return x
+print(string_change("rakesh is a boy"))
+
+@changecase(0)
+def string_change(x):
+    return x
+print(string_change("rakesh is a boy"))
+
+#One decorator for upper case, and one for adding a greeting
+def changecase(func):
+  def myinner():
+    return func().upper()
+  return myinner
+
+def addgreeting(func):
+  def myinner():
+    return "Hello " + func() + " Have a good day!"
+  return myinner
+
+@changecase
+@addgreeting
+def myfunction():
+  return "Tobias"
+
+print(myfunction())
+
+Functions in Python has metadata that can be accessed using the __name__ and __doc__ attributes
+
+But, when a function is decorated, the metadata of the original function is lost
+
+To fix this, Python has a built-in function called functools.wraps that can be used to preserve the original function's name and docstring.
+
+import functools
+
+def changecase(func):
+  @functools.wraps(func)
+  def myinner():
+    return func().upper()
+  return myinner
+
+@changecase
+def myfunction():
+  return "Have a great day!"
+
+print(myfunction.__name__)
+
+
+
+
