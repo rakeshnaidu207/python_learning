@@ -1,0 +1,202 @@
+# inheritance
+Inheritance allows us to define a class that inherits all the methods and properties from another class.
+Parent class is the class being inherited from, also called base class.
+Child class is the class that inherits from another class, also called derived class.
+Create a Parent Class
+Any class can be a parent class, so the syntax is the same as creating any other class:
+
+Create a class named Person, with firstname and lastname properties, and a printname method:
+
+class Person:
+  def __init__(self, fname, lname):
+    self.firstname = fname
+    self.lastname = lname
+
+  def printname(self):
+    print(self.firstname, self.lastname)
+
+#Use the Person class to create an object, and then execute the printname method:
+
+x = Person("John", "Doe")
+x.printname()
+Create a Child Class
+To create a class that inherits the functionality from another class, send the parent class as a parameter when creating the child class:
+
+Create a class named Student, which will inherit the properties and methods from the Person class:
+
+class Student(Person):
+  pass
+Note: Use the pass keyword when you do not want to add any other properties or methods to the class.
+Now the Student class has the same properties and methods as the Person class.
+Use the Student class to create an object, and then execute the printname method:
+
+x = Student("Mike", "Olsen")
+x.printname()
+
+Add the __init__() Function
+So far we have created a child class that inherits the properties and methods from its parent.
+We want to add the __init__() function to the child class (instead of the pass keyword).
+Note: The __init__() function is called automatically every time the class is being used to create a new object.
+
+Add the __init__() function to the Student class:
+
+class Student(Person):
+  def __init__(self, fname, lname):
+    #add properties etc.
+When you add the __init__() function, the child class will no longer inherit the parent's __init__() function.
+
+Note: The child's __init__() function overrides the inheritance of the parent's __init__() function.
+
+To keep the inheritance of the parent's __init__() function, add a call to the parent's __init__() function:
+
+class Student(Person):
+  def __init__(self, fname, lname):
+    Person.__init__(self, fname, lname)
+Now we have successfully added the __init__() function, and kept the inheritance of the parent class, and we are ready to add functionality in the __init__() function.
+
+Use the super() Function
+Python also has a super() function that will make the child class inherit all the methods and properties from its parent:
+
+class Student(Person):
+  def __init__(self, fname, lname):
+    super().__init__(fname, lname)
+By using the super() function, you do not have to use the name of the parent element, it will automatically inherit the methods and properties from its parent.
+
+Add a property called graduationyear to the Student class:
+
+class Student(Person):
+  def __init__(self, fname, lname):
+    super().__init__(fname, lname)
+    self.graduationyear = 2019
+In the example below, the year 2019 should be a variable, and passed into the Student class when creating student objects. To do so, add another parameter in the __init__() function:
+
+Add a year parameter, and pass the correct year when creating objects:
+
+class Student(Person):
+  def __init__(self, fname, lname, year):
+    super().__init__(fname, lname)
+    self.graduationyear = year
+
+x = Student("Mike", "Olsen", 2019)
+Add Methods
+Add a method called welcome to the Student class:
+
+class Student(Person):
+  def __init__(self, fname, lname, year):
+    super().__init__(fname, lname)
+    self.graduationyear = year
+
+  def welcome(self):
+    print("Welcome", self.firstname, self.lastname, "to the class of", self.graduationyear)
+If you add a method in the child class with the same name as a function in the parent class, the inheritance of the parent method will be overridden.
+
+#polymorphism
+The word "polymorphism" means "many forms", and in programming it refers to methods/functions/operators with the same name that can be executed on many objects or classes.
+
+Function Polymorphism
+An example of a Python function that can be used on different objects is the len() function.
+
+String
+For strings len() returns the number of characters:
+
+x = "Hello World!"
+
+print(len(x))
+Tuple
+For tuples len() returns the number of items in the tuple:
+
+mytuple = ("apple", "banana", "cherry")
+
+print(len(mytuple))
+Dictionary
+For dictionaries len() returns the number of key/value pairs in the dictionary:
+
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+print(len(thisdict))
+
+Class Polymorphism
+Polymorphism is often used in Class methods, where we can have multiple classes with the same method name.
+
+For example, say we have three classes: Car, Boat, and Plane, and they all have a method called move():
+
+Different classes with the same method:
+
+class Car:
+  def __init__(self, brand, model):
+    self.brand = brand
+    self.model = model
+
+  def move(self):
+    print("Drive!")
+
+class Boat:
+  def __init__(self, brand, model):
+    self.brand = brand
+    self.model = model
+
+  def move(self):
+    print("Sail!")
+
+class Plane:
+  def __init__(self, brand, model):
+    self.brand = brand
+    self.model = model
+
+  def move(self):
+    print("Fly!")
+
+car1 = Car("Ford", "Mustang")       #Create a Car object
+boat1 = Boat("Ibiza", "Touring 20") #Create a Boat object
+plane1 = Plane("Boeing", "747")     #Create a Plane object
+
+for x in (car1, boat1, plane1):
+  x.move()
+Look at the for loop at the end. Because of polymorphism we can execute the same method for all three classes.
+
+Inheritance Class Polymorphism
+What about classes with child classes with the same name? Can we use polymorphism there?
+
+Yes. If we use the example above and make a parent class called Vehicle, and make Car, Boat, Plane child classes of Vehicle, the child classes inherits the Vehicle methods, but can override them:
+
+Create a class called Vehicle and make Car, Boat, Plane child classes of Vehicle:
+
+class Vehicle:
+  def __init__(self, brand, model):
+    self.brand = brand
+    self.model = model
+
+  def move(self):
+    print("Move!")
+
+class Car(Vehicle):
+  pass
+
+class Boat(Vehicle):
+  def move(self):
+    print("Sail!")
+
+class Plane(Vehicle):
+  def move(self):
+    print("Fly!")
+
+car1 = Car("Ford", "Mustang")       #Create a Car object
+boat1 = Boat("Ibiza", "Touring 20") #Create a Boat object
+plane1 = Plane("Boeing", "747")     #Create a Plane object
+
+for x in (car1, boat1, plane1):
+  print(x.brand)
+  print(x.model)
+  x.move()
+Child classes inherits the properties and methods from the parent class.
+
+In the example above you can see that the Car class is empty, but it inherits brand, model, and move() from Vehicle.
+
+The Boat and Plane classes also inherit brand, model, and move() from Vehicle, but they both override the move() method.
+
+Because of polymorphism we can execute the same method for all classes.
+
