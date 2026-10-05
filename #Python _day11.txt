@@ -1,0 +1,485 @@
+#Python File Handling
+
+Python uses the open() function to create, read, write, and update files.
+
+Syntax:
+
+f = open("filename.txt", "mode")
+File Modes
+r – Read a file; gives an error if the file does not exist.
+w – Write to a file; creates the file if it doesn’t exist.
+a – Append data to a file; creates it if needed.
+x – Create a new file; gives an error if the file already exists.
+t – Text mode (default).
+b – Binary mode, used for images and other binary files.
+
+Example:
+
+f = open("demofile.txt", "r")
+
+Here, "r" means read and "t" (text mode) is the default.
+
+
+#Python File Open
+
+Python uses the open() function to open and read files.
+
+open("file.txt") – Opens a file and returns a file object.
+read() – Reads the entire file or a specified number of characters.
+readline() – Reads one line at a time.
+for loop – Can be used to read a file line by line.
+close() – Closes the file after use.
+with open() – Automatically closes the file, so it is the recommended method.
+
+Example:
+
+with open("demofile.txt") as f:
+    print(f.read())
+
+In short: open() opens the file, read()/readline() reads it, and with safely manages the file.
+
+#Python File Write
+
+Python uses the open() function with different modes to write and create files.
+
+"a" (Append) – Adds new content to the end of an existing file. Creates the file if it does not exist.
+"w" (Write) – Overwrites all existing content. Creates the file if it does not exist.
+"x" (Create) – Creates a new file. Gives an error if the file already exists.
+write() – Used to write content into a file.
+
+Example:
+
+with open("demofile.txt", "a") as f:
+    f.write("New content")
+
+In short: Use a to add content, w to replace content, and x to create a new file.
+
+#Python Delete File
+
+Python uses the os module to delete files and folders.
+
+os.remove() – Deletes a file.
+os.path.exists() – Checks whether a file exists before deleting it.
+os.rmdir() – Deletes an empty folder.
+
+Example:
+
+import os
+
+if os.path.exists("demofile.txt"):
+    os.remove("demofile.txt")
+else:
+    print("The file does not exist")
+
+In short: Use os.remove() to delete files and os.rmdir() to delete empty folders.
+________________________________________________________________________________________
+
+#Installation of NumPy
+
+If you have Python and PIP already installed on a system, then installation of NumPy is very easy.
+
+Install it using this command
+
+C:\Users\Your Name>pip install numpy
+If this command fails, then use a python distribution that already has NumPy installed like, Anaconda, Spyder etc.
+
+Import NumPy
+Once NumPy is installed, import it in your applications by adding the import keyword:
+
+import numpy
+Now NumPy is imported and ready to use.
+
+ExampleGet your own Python Server
+import numpy
+
+arr = numpy.array([1, 2, 3, 4, 5])
+
+print(arr)
+NumPy as np
+NumPy is usually imported under the np alias.
+
+alias: In Python alias are an alternate name for referring to the same thing.
+
+Create an alias with the as keyword while importing:
+
+import numpy as np
+Now the NumPy package can be referred to as np instead of numpy.
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5])
+print(arr)
+
+Checking NumPy Version
+The version string is stored under __version__ attribute.
+
+import numpy as np
+print(np.__version__)
+
+#Create a NumPy ndarray Object
+
+NumPy is used to work with arrays. The array object in NumPy is called ndarray.
+
+We can create a NumPy ndarray object by using the array() function.
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5])
+print(arr)
+print(type(arr))
+
+type(): This built-in Python function tells us the type of the object passed to it. Like in above code it shows that arr is numpy.ndarray type.
+
+To create an ndarray, we can pass a list, tuple or any array-like object into the array() method, and it will be converted into an ndarray:
+
+Use a tuple to create a NumPy array:
+
+import numpy as np
+arr = np.array((1, 2, 3, 4, 5))
+print(arr)
+
+Dimensions in Arrays
+A dimension in arrays is one level of array depth (nested arrays).
+
+nested array: are arrays that have arrays as their elements.
+
+0-D Arrays
+0-D arrays, or Scalars, are the elements in an array. Each value in an array is a 0-D array.
+
+Create a 0-D array with value 42
+import numpy as np
+arr = np.array(42)
+print(arr)
+
+1-D Arrays
+An array that has 0-D arrays as its elements is called uni-dimensional or 1-D array.
+
+These are the most common and basic arrays.
+
+Create a 1-D array containing the values 1,2,3,4,5:
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5])
+print(arr)
+
+2-D Arrays
+An array that has 1-D arrays as its elements is called a 2-D array.
+
+These are often used to represent matrix or 2nd order tensors.
+
+NumPy has a whole sub module dedicated towards matrix operations called numpy.mat
+
+Example
+Create a 2-D array containing two arrays with the values 1,2,3 and 4,5,6:
+
+import numpy as np
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+print(arr)
+
+3-D arrays
+An array that has 2-D arrays (matrices) as its elements is called 3-D array.
+
+These are often used to represent a 3rd order tensor.
+
+Create a 3-D array with two 2-D arrays, both containing two arrays with the values 1,2,3 and 4,5,6:
+
+import numpy as np
+arr = np.array([[[1, 2, 3], [4, 5, 6]], [[1, 2, 3], [4, 5, 6]]])
+print(arr)
+
+Check Number of Dimensions?
+NumPy Arrays provides the ndim attribute that returns an integer that tells us how many dimensions the array have.
+
+Check how many dimensions the arrays have:
+
+import numpy as np
+
+a = np.array(42)
+b = np.array([1, 2, 3, 4, 5])
+c = np.array([[1, 2, 3], [4, 5, 6]])
+d = np.array([[[1, 2, 3], [4, 5, 6]], [[1, 2, 3], [4, 5, 6]]])
+print(a.ndim)
+print(b.ndim)
+print(c.ndim)
+print(d.ndim)
+Higher Dimensional Arrays
+An array can have any number of dimensions.
+
+When the array is created, you can define the number of dimensions by using the ndmin argument.
+
+Create an array with 5 dimensions and verify that it has 5 dimensions:
+
+import numpy as np
+arr = np.array([1, 2, 3, 4], ndmin=5)
+print(arr)
+print('number of dimensions :', arr.ndim)
+
+In this array the innermost dimension (5th dim) has 4 elements, the 4th dim has 1 element that is the vector, the 3rd dim has 1 element that is the matrix with the vector, the 2nd dim has 1 element that is 3D array and 1st dim has 1 element that is a 4D array.
+
+
+#NumPy Array Indexing
+
+Access Array Elements
+Array indexing is the same as accessing an array element.
+
+You can access an array element by referring to its index number.
+
+The indexes in NumPy arrays start with 0, meaning that the first element has index 0, and the second has index 1 etc.
+
+Get the first element from the following array:
+
+import numpy as np
+arr = np.array([1, 2, 3, 4])
+print(arr[0])
+
+Get the second element from the following array.
+
+import numpy as np
+arr = np.array([1, 2, 3, 4])
+print(arr[1])
+
+Get third and fourth elements from the following array and add them.
+
+import numpy as np
+
+arr = np.array([1, 2, 3, 4])
+
+print(arr[2] + arr[3])
+
+Access 2-D Arrays
+To access elements from 2-D arrays we can use comma separated integers representing the dimension and the index of the element.
+
+Think of 2-D arrays like a table with rows and columns, where the dimension represents the row and the index represents the column.
+
+Access the element on the first row, second column:
+
+import numpy as np
+arr = np.array([[1,2,3,4,5], [6,7,8,9,10]])
+print('2nd element on 1st row: ', arr[0, 1])
+
+Access the element on the 2nd row, 5th column:
+
+import numpy as np
+arr = np.array([[1,2,3,4,5], [6,7,8,9,10]])
+print('5th element on 2nd row: ', arr[1, 4])
+
+Access 3-D Arrays
+To access elements from 3-D arrays we can use comma separated integers representing the dimensions and the index of the element.
+
+Access the third element of the second array of the first array:
+
+import numpy as np
+arr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+print(arr[0, 1, 2])
+arr[0, 1, 2] prints the value 6.
+
+And this is why:
+
+The first number represents the first dimension, which contains two arrays:
+[[1, 2, 3], [4, 5, 6]]
+and:
+[[7, 8, 9], [10, 11, 12]]
+Since we selected 0, we are left with the first array:
+[[1, 2, 3], [4, 5, 6]]
+
+The second number represents the second dimension, which also contains two arrays:
+[1, 2, 3]
+and:
+[4, 5, 6]
+Since we selected 1, we are left with the second array:
+[4, 5, 6]
+
+The third number represents the third dimension, which contains three values:
+4
+5
+6
+Since we selected 2, we end up with the third value:
+6
+
+Negative Indexing
+Use negative indexing to access an array from the end.
+
+Print the last element from the 2nd dim:
+
+import numpy as np
+arr = np.array([[1,2,3,4,5], [6,7,8,9,10]])
+print('Last element from 2nd dim: ', arr[1, -1])
+
+
+#Slicing arrays
+
+Slicing in python means taking elements from one given index to another given index.
+
+We pass slice instead of index like this: [start:end].
+
+We can also define the step, like this: [start:end:step].
+
+If we don't pass start its considered 0
+
+If we don't pass end its considered length of array in that dimension
+
+If we don't pass step its considered 1
+
+Slice elements from index 1 to index 5 from the following array:
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+print(arr[1:5])
+
+Note: The result includes the start index, but excludes the end index.
+
+
+Slice elements from index 4 to the end of the array:
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+print(arr[4:])
+
+Slice elements from the beginning to index 4 (not included):
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+print(arr[:4])
+
+Negative Slicing
+Use the minus operator to refer to an index from the end:
+
+Slice from the index 3 from the end to index 1 from the end:
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+print(arr[-3:-1])
+
+Use the step value to determine the step of the slicing:
+
+Return every other element from index 1 to index 5:
+
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+print(arr[1:5:2])
+
+Return every other element from the entire array:
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+print(arr[::2])
+
+Slicing 2-D Arrays
+From the second element, slice elements from index 1 to index 4 (not included):
+
+import numpy as np
+arr = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
+print(arr[1, 1:4])
+
+Note: Remember that second element has index 1.
+
+From both elements, return index 2:
+
+import numpy as np
+arr = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
+print(arr[0:2, 2])
+
+From both elements, slice index 1 to index 4 (not included), this will return a 2-D array:
+import numpy as np
+arr = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
+print(arr[0:2, 1:4])
+
+
+#NumPy Data Types
+
+Data Types in Python
+By default Python have these data types:
+
+strings - used to represent text data, the text is given under quote marks. e.g. "ABCD"
+integer - used to represent integer numbers. e.g. -1, -2, -3
+float - used to represent real numbers. e.g. 1.2, 42.42
+boolean - used to represent True or False.
+complex - used to represent complex numbers. e.g. 1.0 + 2.0j, 1.5 + 2.5j
+Data Types in NumPy
+NumPy has some extra data types, and refer to data types with one character, like i for integers, u for unsigned integers etc.
+
+Below is a list of all data types in NumPy and the characters used to represent them.
+
+i - integer
+b - boolean
+u - unsigned integer
+f - float
+c - complex float
+m - timedelta
+M - datetime
+O - object
+S - string
+U - unicode string
+V - fixed chunk of memory for other type ( void )
+Checking the Data Type of an Array
+The NumPy array object has a property called dtype that returns the data type of the array:
+
+Get the data type of an array object:
+
+import numpy as np
+arr = np.array([1, 2, 3, 4])
+print(arr.dtype)
+
+Get the data type of an array containing strings:
+
+import numpy as np
+arr = np.array(['apple', 'banana', 'cherry'])
+print(arr.dtype)
+
+
+Creating Arrays With a Defined Data Type
+We use the array() function to create arrays, this function can take an optional argument: dtype that allows us to define the expected data type of the array elements:
+
+Create an array with data type string:
+
+import numpy as np
+arr = np.array([1, 2, 3, 4], dtype='S')
+print(arr)
+print(arr.dtype)
+
+For i, u, f, S and U we can define size as well.
+
+Create an array with data type 4 bytes integer:
+
+import numpy as np
+arr = np.array([1, 2, 3, 4], dtype='i4')
+print(arr)
+print(arr.dtype)
+
+
+What if a Value Can Not Be Converted?
+If a type is given in which elements can't be casted then NumPy will raise a ValueError.
+
+ValueError: In Python ValueError is raised when the type of passed argument to a function is unexpected/incorrect.
+
+A non integer string like 'a' can not be converted to integer (will raise an error):
+
+import numpy as np
+arr = np.array(['a', '2', '3'], dtype='i')
+
+Converting Data Type on Existing Arrays
+The best way to change the data type of an existing array, is to make a copy of the array with the astype() method.
+
+The astype() function creates a copy of the array, and allows you to specify the data type as a parameter.
+
+The data type can be specified using a string, like 'f' for float, 'i' for integer etc. or you can use the data type directly like float for float and int for integer.
+
+Change data type from float to integer by using 'i' as parameter value:
+
+import numpy as np
+arr = np.array([1.1, 2.1, 3.1])
+newarr = arr.astype('i')
+print(newarr)
+print(newarr.dtype)
+
+Change data type from float to integer by using int as parameter value:
+
+import numpy as np
+arr = np.array([1.1, 2.1, 3.1])
+newarr = arr.astype(int)
+print(newarr)
+print(newarr.dtype)
+
+Change data type from integer to boolean:
+import numpy as np
+arr = np.array([1, 0, 3])
+newarr = arr.astype(bool)
+print(newarr)
+print(newarr.dtype)
