@@ -1,0 +1,103 @@
+#NumPy Array Copy vs View
+
+In NumPy, Copy and View are used to create another array from an existing array.
+
+Copy (copy()) – Creates a new array. Changes in the copy do not affect the original array.
+View (view()) – Creates a reference/view of the original array. Changes in the view affect the original array and vice versa.
+base attribute – Checks whether an array owns its data.
+None → Array owns its data (Copy).
+Original array → Array is a View.
+
+Example:
+
+x = arr.copy()   # Copy
+y = arr.view()   # View
+
+In short: Copy = independent data, while View = shared data.
+
+#NumPy Array Shape
+
+The shape of a NumPy array tells us the number of elements in each dimension.
+
+The shape attribute returns a tuple showing the size of each dimension.
+For a 2-D array, (2, 4) means 2 rows and 4 columns.
+The ndmin parameter can be used to create an array with a minimum number of dimensions.
+
+Example:
+
+import numpy as np
+
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+print(arr.shape)
+
+Output:
+
+(2, 3)
+
+In short: shape tells us the size of an array in each dimension.
+
+#NumPy Array Reshaping
+
+Reshaping means changing the shape or dimensions of a NumPy array without changing its data.
+
+reshape() – Changes the dimensions of an array.
+The total number of elements must remain the same.
+-1 can be used for one unknown dimension, which NumPy calculates automatically.
+reshape(-1) converts a multidimensional array into a 1-D array (flattening).
+Reshaping generally returns a view of the original array.
+
+Example:
+
+import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5, 6])
+newarr = arr.reshape(2, 3)
+
+print(newarr)
+
+In short: reshape() changes the array's dimensions while keeping the same number of elements.
+
+#NumPy Array Iterating
+
+Iterating means accessing array elements one by one.
+
+1-D array: A simple for loop accesses each element.
+2-D/3-D arrays: Nested for loops are used to access individual elements.
+np.nditer() – Easily iterates through every scalar element of arrays with any number of dimensions.
+op_dtypes – Changes the data type while iterating.
+flags=['buffered'] – Allows temporary storage when changing data types.
+ndenumerate() – Returns both the index and value of each element.
+
+Example:
+
+import numpy as np
+
+arr = np.array([[1, 2], [3, 4]])
+
+for x in np.nditer(arr):
+    print(x)
+
+In short: Use for loops for basic iteration, nditer() for efficient multidimensional iteration, and ndenumerate() when you need both index and value.
+
+using of range
+
+import numpy as np
+print(np.arange(0,5))
+
+sum
+import numpy as np
+v=np.sum([1,2,3])
+print(v)
+
+note: we cannot use the mode in numpy
+import numpy as np
+v=np.mean([1,2,3])
+print(v)
+
+import numpy as np
+v=np.min([1,2,3])
+print(v)
+
+import numpy as np
+v=np.max([1,2,3])
+print(v)
