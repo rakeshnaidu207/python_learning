@@ -1,0 +1,32 @@
+day-1
+#meachine learning
+
+supervise learning  -- in supervise learning we have x and have y -- to predict something
+unsupervised learning  --- in unsupervised learning we have x and don't have y-- to predict something
+reinforce learning  -- agent,startpoint,end point,evinorment,action (to train the machine)
+
+#supervise learning
+
+classification---- x is the data y is the label and output and output will be 0,1(like true or false)
+regression --- x is the data and y is the label the output will be in continues(like decimal and digits)
+
+regression
+1.linear regession
+simple linear regression -- it has independent variable and dependent variable(x,y)
+in linear regression we take only one column from the data set and split the column as test and train and y is the output x is the train and test data with one column
+multi linear regression ---it has independent variable and dependent variable(x,y)
+in linear regression we take only two column from the data set and split the column as test and train and y is the output x is the train and test data with two column
+
+
+steps in machine learning 
+1.data collection and data cleaning--- selecting the data and cleaning the data
+2.spliting of data(train and test)--splitting the data for train and test data
+3.selecting the model--- selecting the suitable model
+
+types of fitting
+1.under fitting
+2.best fitting
+3.overfitting
+
+if the model gives 100% accuracy it was not good model.
+good model should be 92% to 98% accuracy.
