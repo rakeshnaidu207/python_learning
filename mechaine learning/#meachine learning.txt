@@ -1,4 +1,3 @@
-day-1
 #meachine learning
 
 supervise learning  -- in supervise learning we have x and have y -- to predict something
@@ -201,4 +200,149 @@ Density-based algorithm	Centroid-based algorithm
 
 Conclusion
 DBSCAN is a density-based clustering algorithm that groups closely packed data points and identifies outliers as noise. It is useful when the number of clusters is unknown and the data contains irregularly shaped clusters. However, its performance depends on selecting suitable eps and MinPts values, and it can struggle when clusters have significantly different densities
+
+#neural network
+
+structure of neural network
+node1-node2-node3
+node1=input
+node2=hidden layer
+node3=output
+weights = number for the input
+weights should be changed based on the out put
+
+types of out put in neural networks
+1.one to one
+2.one to many
+3.many to one
+4.many to many
+
+types of neural network
+
+Major Types of Neural Networks
+
+1. Feedforward Neural Networks (FNN) / Perceptrons
+	• How it works: Data moves in a single direction from input, through hidden layers, to the output without forming loops.
+	• Best for: Static data, simple classification, and regression problems.
+2. Multilayer Perceptrons (MLP)
+	• How it works: An FNN with multiple hidden layers and non-linear activation functions.
+	• Best for: Complex tabular data and pattern recognition.
+3. Convolutional Neural Networks (CNN)
+	• How it works: Uses specialized convolutional and pooling layers to detect spatial hierarchies and grid-like patterns.
+	• Best for: Image classification, object detection, and medical imaging.
+4. Recurrent Neural Networks (RNN)
+	• How it works: Features feedback loops that let information persist, giving the network a temporary memory for sequences.
+	• Best for: Time-series forecasting and speech recognition.
+5. Long Short-Term Memory Networks (LSTM) & GRUs
+	• How it works: Advanced variants of RNNs equipped with gating mechanisms to retain long-term dependencies without gradient decay.
+	• Best for: Language translation, speech-to-text, and long-sequence monitoring.
+6. Transformer Networks
+	• How it works: Relies on self-attention mechanisms to process all tokens in a sequence simultaneously rather than step-by-step.
+	• Best for: Large Language Models (LLMs), text generation, and natural language processing.
+7. Generative Adversarial Networks (GAN)
+	• How it works: Pairs a generator (creates fake data) against a discriminator (evaluates real vs. fake) in a competitive training loop.
+	• Best for: Generating realistic synthetic images, data augmentation, and style transfer.
+8. Autoencoders
+	• How it works: Compresses input data into a lower-dimensional latent space via an encoder and reconstructs it via a decoder.
+	• Best for: Dimensionality reduction, anomaly detection, and denoising.
+9. Radial Basis Function Networks (RBFN)
+	• How it works: Uses radial basis functions as activation functions, measuring distance relative to a center prototype.
+	• Best for: Function approximation and localized classification
+ 
+Activation Functions
+1.ReLU (Rectified Linear Unit)  ---- Defined as \(A(x) = \max(0, x)\). It outputs the input directly if positive, or 0 if negative. It is the most popular default choice for hidden layers because it speeds up training and avoids positive-input vanishing gradients 0- +ve
+2.Sigmoid ----  Defined as \(\sigma(x) = \frac{1}{1 + e^{-x}}\). It squashes values into a range between 0 and 1. It is typically used in the output layer for binary classification
+3.Tanh (Hyperbolic Tangent) --- Maps input values to a range between -1 and 1. It is zero-centered, which can make optimization easier than sigmoid, though it still suffers from vanishing gradients in its steep tails 
+4.Softmax  --- Converts a vector of raw scores into a probability distribution that sums to 1. It is standard for the output layer in multi-class classification.
+5.Leaky ReLU / ELU ---- Variants of ReLU that allow a small, non-zero gradient for negative inputs to prevent "dying ReLU" issues where neurons stop learning. -ne to +ve
+
+for gen ai
+reinforment learning, slm, llm, cnn
+
+layers of cnn
+
+
+#Layers of a CNN
+
+• Input Layer
+Receives the raw image data, typically represented as a 3D volume (width × height × color channels like RGB or grayscale).
+• Convolutional Layer (CONV)
+The core building block of a CNN. It slides a small matrix called a kernel or filter across the input, performing element-wise multiplications and additions to produce a feature map that highlights specific traits like edges or corners.
+• Activation Function (ReLU)
+Usually the Rectified Linear Unit (ReLU) function, which introduces non-linearity by turning negative pixel values to zero (\(\max(0, x)\)), allowing the network to learn complex patterns.
+• Pooling Layer (POOL)
+Downsamples the feature map to reduce its spatial dimensions (width and height), cut down memory usage, speed up computation, and provide translation invariance (e.g., using Max Pooling or Average Pooling).
+• Flatten Layer
+Converts the multi-dimensional 2D/3D feature maps into a single 1D feature vector so it can be fed into standard neural network layers.
+• Fully Connected Layer (Dense / FC)
+Acts like a traditional neural network where every neuron connects to every other neuron. It uses the extracted high-level features to perform final reasoning.
+• Output Layer (Softmax / Sigmoid)
+The final layer that converts the dense layer scores into class probabilities (using Softmax for multi-class classification or Sigmoid for binary classification) 
+
+
+# types of cnn
+
+important 1,3,4
+
+1. LeNet-5
+- One of the earliest CNN architectures.
+- Used for handwritten digit recognition.
+- Example: recognizing digits in postal codes.
+
+2. AlexNet
+- A deeper CNN that popularized deep learning for image classification.
+- Uses ReLU activation and dropout.
+- Example: classifying images of cats and dogs.
+
+3. VGGNet (VGG-16, VGG-19)
+- Uses small \(3 \times 3\) convolution filters in a deep network.
+- Simple and systematic architecture.
+- Example: image classification and feature extraction.
+
+4. GoogLeNet (Inception)
+- Uses parallel convolution operations with different filter sizes.
+- Extracts features at multiple scales.
+- Example: object recognition.
+
+5. ResNet (Residual Network)
+- Uses skip connections to help train very deep networks.
+- Common versions include ResNet-18, ResNet-50, and ResNet-101.
+- Example: medical image classification.
+
+6. MobileNet
+- Designed for mobile devices and low-computation environments.
+- Uses depthwise separable convolutions.
+- Example: real-time object detection on smartphones.
+
+7. DenseNet
+- Each layer receives feature maps from earlier layers.
+- Encourages feature reuse.
+- Example: medical imaging and image classification.
+
+8. U-Net
+- Uses an encoder–decoder structure with skip connections.
+- Mainly designed for image segmentation.
+- Example: identifying tumors in medical scans.
+
+#types of rnn
+
+Core Types of RNN Architectures (Input-to-Output Mappings)
+
+RNNs can alter their architecture to match different types of sequence lengths. The four primary data-flow types include:
+• One-to-One: The simplest neural network structure featuring a single input and a single output. It acts like a traditional feedforward network and is used for non-sequential tasks like image classification.
+• One-to-Many: Takes a single, fixed-size input and yields a sequence of multiple outputs. This is commonly used in image captioning (inputting an image to generate a sentence) or music/text generation.
+• Many-to-One: Accepts a sequence of data as input and condenses it into a single, fixed output. This layout is standard for sentiment analysis, where a full sentence of words is processed to output a single score or category (e.g., positive or negative).
+• Many-to-Many: Processes a sequence of inputs and generates a sequence of outputs. This can happen synchronously—such as Named Entity Recognition (NER) where every word gets a label—or asynchronously—such as an encoder-decoder network used in machine translation
+
+
+Advanced Variants of RNNs
+
+Standard (or "vanilla") RNNs suffer from technical limitations like the vanishing gradient problem, meaning they struggle to remember context over long sequences (usually failing past ~30 steps). To overcome this, advanced variants were created:
+
+RNN Variant	Key Mechanism	Best Used For
+Long Short-Term Memory (LSTM)	Uses a unique cell state regulated by three gates (input, forget, and output) to selectively remember or forget long-term dependencies.	Complex, long-form text processing, speech recognition, and long-range time-series forecasting.
+Gated Recurrent Unit (GRU)	A streamlined version of LSTM that combines the cell and hidden states using only two gates (reset and update).	Faster training on sequential data when computational efficiency is prioritized over maximum complexity.
+Bidirectional RNN (Bi-RNN / BiLSTM)	Duplicates the network structure to process sequential data both forward and backward in time simultaneously.	Natural Language Processing (NLP) tasks where understanding both the preceding and upcoming words is critical.
+
+
 
