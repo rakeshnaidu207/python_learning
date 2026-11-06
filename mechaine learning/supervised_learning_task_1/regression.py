@@ -68,11 +68,6 @@ print(r2_score(y_test,y_pred2))
 print(r2_score(y_test,y_pred3))
 
 "note: by observing the results the random forest is predicting well when compare to the remaining models"
-"in this code i have used the regression models because the target column in the form decimal formate"
-"i have used the  LinearRegression,DecisionTreeRegressor,RandomForestRegressor,SVR models"
-"dataset loadeing and data cleaning to covert the columns in to numeric and selected the columns for x and y has done"
-"splitting of the data and applying the models and find the r2_score,mean_squared_error"
-"and drawn the graph for the model which was predicting good"
 
 #plot for random forest
 plt.figure(figsize=(8, 6))
