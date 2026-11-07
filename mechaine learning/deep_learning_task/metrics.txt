@@ -1,0 +1,6 @@
+MNIST Handwritten Digit Recognition - Performance Metrics
+==========================================================
+Epochs: 10   Batch size: 128   Optimizer: Adam
+Training accuracy : 99.16%  (loss 0.0255)  on 60,000 images
+Test accuracy     : 97.56%  (loss 0.0915)  on 10,000 unseen images
+Target (>96%)     : MET
